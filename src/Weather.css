@@ -1,0 +1,61 @@
+.Weather {
+  padding: 20px;
+  border-radius: 15px;
+  background: #ececec;
+}
+
+.Weather .overview {
+  margin-bottom: 20px;
+}
+
+.dt-desc {
+  color: rgb(135, 135, 135);
+}
+
+.Weather .weather-temperature img {
+  margin-top: -29px;
+  margin-right: 5px;
+  height: 64px;
+  width: 64px;
+}
+
+.Weather .weather-temperature strong {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.Weather .weather-temperature .units {
+  position: relative;
+  font-size: 17px;
+  top: -32px;
+}
+
+.Weather .humidity-wind {
+  color: #934662;
+}
+
+.Weather .weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+}
+
+.Weather .weather-forecast-date {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.Weather .weather-forecast-temperature-max {
+  color: #934662;
+}
+
+.Weather .weather-forecast-temperature-min {
+  color: #934662;
+  opacity: 0.6;
+}
+
+.Weather .weather-forecast-temperatures {
+  font-size: 13px;
+}
