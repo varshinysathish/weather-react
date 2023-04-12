@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
+  const apiKey = "9ece65da0f72264bfe679ddf770d6e93";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API key}&units=metric`;
+  axios.get(apiUrl).then(handleResponse); //ajax call
   let weatherData = {
     city: "Singapore",
     temperature: 28,
