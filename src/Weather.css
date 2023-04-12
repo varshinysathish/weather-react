@@ -59,3 +59,54 @@
 .Weather .weather-forecast-temperatures {
   font-size: 13px;
 }
+
+.Weather body {
+  font-family: arial, sans-serif;
+  background: #905e63;
+}
+
+.Weather .search-button {
+  border-radius: 30px;
+  background: #e7d5d4;
+}
+
+.Weather button {
+  display: block;
+  background: #934662;
+  color: white;
+  font-size: 16px;
+  padding: 6px 18px;
+  border: 1px solid rgb(135, 135, 135);
+  border-radius: 30px;
+}
+
+.Weather button:hover {
+  background: #7e6d9e;
+  color: white;
+}
+
+.Weather h1 {
+  color: #934662;
+  font-size: 35px;
+  font-weight: 100;
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 28px;
+  margin-bottom: 10px;
+}
+
+.Weather ul {
+  margin: 0;
+  padding: 0;
+}
+
+.Weather li {
+  list-style: none;
+  color: rgb(135, 135, 135);
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 19px;
+}
+
+.Weather li:first-letter {
+  text-transform: capitalize;
+}

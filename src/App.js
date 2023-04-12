@@ -8,7 +8,7 @@ function App() {
       <div className="container">
         <Weather />
       </div>
-      <small>
+      <footer>
         <a
           href="https://github.com/varshinysathish/weather-react"
           target="_blank"
@@ -17,7 +17,7 @@ function App() {
           Open-source code
         </a>
         , by Varshiny Sathishkumar
-      </small>
+      </footer>
     </div>
   );
 }

@@ -8,6 +8,20 @@
   margin: 30px auto;
 }
 
+.App footer {
+  font-size: 13px;
+  margin: 10px 20px;
+}
+
+.App footer a {
+  text-decoration: none;
+  color: white;
+}
+
+.App footer a:hover {
+  text-decoration: underline;
+}
+
 body {
   font-family: arial, sans-serif;
   background: #905e63;
@@ -45,15 +59,6 @@ h1 {
 ul {
   margin: 0;
   padding: 0;
-}
-
-small a {
-  text-decoration: none;
-  color: white;
-}
-
-small a:hover {
-  text-decoration: underline;
 }
 
 li {
