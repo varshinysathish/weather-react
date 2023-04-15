@@ -3,86 +3,96 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  const apiKey = "9ece65da0f72264bfe679ddf770d6e93";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API key}&units=metric`;
-  axios.get(apiUrl).then(handleResponse); //ajax call
-  let weatherData = {
-    city: "Singapore",
-    temperature: 28,
-    date: "Tuesday 15:54",
-    description: "Broken clouds",
-    imgUrl: "http://openweathermap.org/img/wn/04d@2x.png",
-    humidity: 76,
-    wind: 8,
-  };
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  function handleResponse(response) {
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      date: "Wednesday 07:00",
+      description: response.data.weather[0].description,
+      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
+      wind: response.data.wind.speed,
+      city: response.data.name,
+    });
+  }
 
-  return (
-    <div className="Weather">
-      <form id="search-form" className="mb-3">
-        <div className="row">
-          <div className="col-9">
-            <input
-              type="search"
-              placeholder="Enter a city..."
-              className="form-control search-button"
-              autoFocus="on"
-              id="city-input"
-              autoComplete="off"
-            />
-          </div>
-          <div className="col-3">
-            <button>Search</button>
-          </div>
-        </div>
-        <br />
-      </form>
-      <div className="overview">
-        <h1 id="city">{weatherData.city}</h1>
-        <ul>
-          <li className="dt-desc">
-            Last updated:{" "}
-            <span className="dt-desc" id="date">
-              {weatherData.date}
-            </span>
-          </li>
-          <li className="dt-desc description" id="description">
-            {weatherData.description}
-          </li>
-        </ul>
-        <br />
-      </div>
-      <div className="row">
-        <div className="col-6">
-          <div className="clearfix weather-temperature">
-            <div className="float-left">
-              <img
-                src={weatherData.imgUrl}
-                alt={weatherData.description}
-                id="icon"
-                className="float-left"
+  if (weatherData.ready) {
+    return (
+      <div className="Weather">
+        <form id="search-form" className="mb-3">
+          <div className="row">
+            <div className="col-9">
+              <input
+                type="search"
+                placeholder="Enter a city..."
+                className="form-control search-button"
+                autoFocus="on"
+                id="city-input"
+                autoComplete="off"
               />
-              <strong id="temperature">{weatherData.temperature}</strong>
-              <span className="units"> °C </span>
+            </div>
+            <div className="col-3">
+              <button>Search</button>
             </div>
           </div>
-        </div>
-        <div className="col-6">
+          <br />
+        </form>
+        <div className="overview">
+          <h1 id="city">{weatherData.city}</h1>
           <ul>
-            <li>
-              Humidity:
-              <span className="humidity-wind">
-                <span id="humidity"></span> {weatherData.humidity}%
-              </span>
-            </li>
-            <li>
-              Wind:
-              <span className="humidity-wind">
-                <span id="wind"></span> {weatherData.humidity} km/h
-              </span>
+            <li className="dt-desc">{weatherData.date}</li>
+            <li
+              className="dt-desc description text-capitalize"
+              id="description"
+            >
+              {weatherData.description}
             </li>
           </ul>
+          <br />
+        </div>
+        <div className="row">
+          <div className="col-6">
+            <div className="clearfix weather-temperature">
+              <div className="float-left">
+                <img
+                  src={weatherData.iconUrl}
+                  alt={weatherData.description}
+                  id="icon"
+                  className="float-left"
+                />
+                <strong id="temperature">
+                  {Math.round(weatherData.temperature)}
+                </strong>
+                <span className="units"> °C </span>
+              </div>
+            </div>
+          </div>
+          <div className="col-6">
+            <ul>
+              <li>
+                Humidity:
+                <span className="humidity-wind">
+                  <span id="humidity"></span> {weatherData.humidity}%
+                </span>
+              </li>
+              <li>
+                Wind:
+                <span className="humidity-wind">
+                  <span id="wind"></span> {weatherData.wind} km/h
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    const apiKey = "9ece65da0f72264bfe679ddf770d6e93";
+    let city = "Singapore";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse); //ajax call
+
+    return "Loading...";
+  }
 }
