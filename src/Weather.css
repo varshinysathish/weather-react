@@ -12,16 +12,10 @@
   color: rgb(135, 135, 135);
 }
 
-.Weather .weather-temperature img {
-  margin-top: -29px;
-  margin-right: 5px;
-  height: 64px;
-  width: 64px;
-}
-
 .Weather .weather-temperature strong {
   color: rgb(33, 33, 33);
   font-size: 64px;
+  margin-left: 5px;
   line-height: 1;
   font-weight: 400;
 }
